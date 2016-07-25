@@ -49,6 +49,11 @@ site_url="https://wow.curseforge.com https://www.wowace.com"
 game_version=
 game_version_id=
 
+# Load secrets from local file if available
+if [ -f "auth.env" ]; then
+	. "auth.env"
+fi
+
 # Secrets for uploading
 cf_token=$CF_API_KEY
 wowi_user=$WOWI_USERNAME
