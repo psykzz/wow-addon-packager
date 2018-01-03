@@ -1948,6 +1948,7 @@ if [ -z "$skip_zipfile" ]; then
 		# check if a release exists and delete it
 		release_id=$( curl -sS "https://api.github.com/repos/$project_github_slug/releases/tags/$tag" | jq '.id | select(. != null)' )
 		if [ -n "$release_id" ]; then
+			echo "Removing old release: $release_id"
 			curl -s -H "Authorization: token $github_token" -X DELETE "https://api.github.com/repos/$project_github_slug/releases/$release_id" &>/dev/null
 			release_id=
 		fi
